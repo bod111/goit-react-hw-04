@@ -17,6 +17,7 @@
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 200px);
   align-items: center;
+  z-index: 3;
 }
 
 .descriptionBlock{

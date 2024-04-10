@@ -14,6 +14,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [topic, setTopic] = useState("");
   const [modal, setModal] = useState("");
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -32,6 +33,10 @@ function App() {
     fetchPhotos();
   }, [topic, page]);
 
+  useEffect(() => {
+    modal !== "" && setIsOpen(true);
+  }, [modal]);
+
   const onSubmitForm = (nameOnForm) => {
     setTopic(nameOnForm);
     setPage(1);
@@ -46,7 +51,7 @@ function App() {
   const handleClick = (card) => setModal(card);
 
   const onClose = (e) => {
-    (e.target === e.currentTarget || e.code === "Escape") && setModal("");
+    e.target === e.currentTarget && (setIsOpen(false), setModal(""));
   };
 
   return (
@@ -66,7 +71,9 @@ function App() {
       )}
       {error && <p>Whoops, something went wrong!</p>}
       {loading && <Loader />}
-      {modal && <ImageModal onClose={onClose} card={modal} />}
+      {modalIsOpen && (
+        <ImageModal onClose={onClose} card={modal} modalIsOpen={modalIsOpen} />
+      )}
     </>
   );
 }

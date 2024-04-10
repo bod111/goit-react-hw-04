@@ -8,7 +8,6 @@ export default function SearchBar({ onSubmit }) {
     evt.preventDefault();
     const form = evt.target;
     const topic = form.elements.topic.value;
-    console.log("handleSubmit ~ topic:", topic);
     !topic.trim() ? notify() : onSubmit(topic);
     form.reset();
   };
