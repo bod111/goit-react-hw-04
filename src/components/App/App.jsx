@@ -3,6 +3,7 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import ImageModal from "../ImageModal/ImageModal";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import Loader from "../Loader/Loader";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { getPhotosByQuery } from "../../service/api";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -69,7 +70,7 @@ function App() {
           )}
         </>
       )}
-      {error && <p>Whoops, something went wrong!</p>}
+      {error && <ErrorMessage />}
       {loading && <Loader />}
       {modalIsOpen && (
         <ImageModal onClose={onClose} card={modal} modalIsOpen={modalIsOpen} />

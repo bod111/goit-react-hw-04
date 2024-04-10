@@ -7,5 +7,6 @@ export const getPhotosByQuery = async (query, page) => {
   const { data } = await axios.get(
     `search/photos?query=${query}&client_id=${MY_KEY}&page=${page}&orientation=landscape&per_page=12`
   );
+  // console.log(data);
   return data;
 };
